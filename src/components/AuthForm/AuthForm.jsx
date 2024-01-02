@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 //components
 import { Box, VStack, Text, Input, Button, Flex } from '@chakra-ui/react'
 import { FcGoogle } from 'react-icons/fc';
+import { InstagramLogo } from '../../assets/constants';
 
 export const AuthForm = () => {
     const navigate = useNavigate()
@@ -37,7 +38,7 @@ export const AuthForm = () => {
         <>
             <Box border={'1px solid gray'} borderRadius={4} padding={5}>
                 <VStack spacing={4}>
-                    <Text fontSize='2xl'>Instagram Clone</Text>
+                    <InstagramLogo/>
                     <Input
                         placeholder={'Email'}
                         value={inputs.email}
@@ -73,7 +74,7 @@ export const AuthForm = () => {
                     </Flex>
 
                     <Flex alignItems={'center'} justifyContent={'center'} cursor={'pointer'}>
-                        <FcGoogle />
+                        <FcGoogle size={25} />
                         <Text mx={2} color={'blue.500'}>Log In With Google</Text>
                     </Flex>
                 </VStack>
