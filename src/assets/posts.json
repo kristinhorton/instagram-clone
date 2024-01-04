@@ -1,0 +1,169 @@
+{
+    "posts": [
+        {
+            "alt": "image1",
+            "src": "src/public/post-image1.jpg",
+            "fullName": "Ali Angel",
+            "username": "ali.angel",
+            "time": "1hr",
+            "isFollowing": false,
+            "caption": "I am post",
+            "comments": [
+                "I like this post",
+                "I like this post",
+                "I like this post"
+            ],
+            "likes": 23,
+            "isLikedByYou": true,
+            "avatar": "src/public/profile-pic-1.jpg"
+        },
+        {
+            "alt": "image2",
+            "src": "src/public/post-image2.jpg",
+            "fullName": "John O\"brien",
+            "username": "john.obrien",
+            "time": "2hr",
+            "isFollowing": true,
+            "caption": "This is a caption. A less short caption, but still a caption.",
+            "comments": [
+                "I like this post"
+            ],
+            "likes": 4,
+            "isLikedByYou": true,
+            "avatar": "src/public/profile-pic-2.jpg"
+        },
+        {
+            "alt": "image3",
+            "src": "src/public/post-image3.jpg",
+            "fullName": "Sarah Krieg",
+            "username": "sarah.krieg",
+            "time": "2hr",
+            "isFollowing": false,
+            "caption": "This is a med caption that uses a lot of words because sometimes there are a lot of words necessary in order to caption things.",
+            "comments": [
+                "I like this post",
+                "I like this post",
+                "I like this post",
+                "I like this post"
+            ],
+            "likes": 200,
+            "isLikedByYou": false,
+            "avatar": "src/public/profile-pic-3.jpg"
+        },
+        {
+            "alt": "image4",
+            "src": "src/public/post-image4.jpg",
+            "fullName": "Jeff Shmeff",
+            "username": "jeff.shmeff",
+            "time": "4hr",
+            "isFollowing": true,
+            "caption": "Caption. Inspiration. Done.",
+            "comments": [],
+            "likes": 0,
+            "isLikedByYou": false,
+            "avatar": "src/public/profile-pic-4.jpg"
+        },
+        {
+            "alt": "image5",
+            "src": "src/public/post-image5.jpg",
+            "fullName": "Olivia Boyd",
+            "username": "olvia.boyd",
+            "time": "4h",
+            "isFollowing": true,
+            "caption": "This is a long caption. A very long caption. Which by definition means it uses many words in order to get it's point across. Which usually takes a lot of words because in order to be long it needs that many. And sometimes many more than you would prefer.",
+            "comments": [
+                "I like this post",
+                "I like this post",
+                "I like this post",
+                "I like this post",
+                "I like this post"
+            ],
+            "likes": 134,
+            "isLikedByYou": false,
+            "avatar": "src/public/profile-pic-5.jpg"
+        },
+        {
+            "alt": "image6",
+            "src": "src/public/post-image6.jpg",
+            "fullName": "Vina Le",
+            "username": "vina.le",
+            "time": "9h",
+            "caption": "I love cheese",
+            "comments": [
+                "I like this post",
+                "I like this post"
+            ],
+            "likes": 98,
+            "isLikedByYou": true,
+            "avatar": "src/public/profile-pic-6.jpg"
+        },
+        {
+            "alt": "image7",
+            "src": "src/public/post-image7.jpg",
+            "fullName": "Paul Cunningham",
+            "username": "paulywally",
+            "time": "1d",
+            "isFollowing": false,
+            "caption": "This is a caption. A short caption.",
+            "comments": [
+                "I like this post",
+                "I like this post",
+                "I like this post",
+                "I like this post",
+                "I like this post",
+                "I like this post",
+                "I like this post",
+                "I like this post",
+                "I like this post"
+            ],
+            "likes": 18,
+            "isLikedByYou": false,
+            "avatar": "src/public/profile-pic-7.jpg"
+        },
+        {
+            "alt": "image8",
+            "src": "src/public/post-image8.jpg",
+            "fullName": "Alec Bonner",
+            "username": "alec.bonner",
+            "time": "2d",
+            "isFollowing": true,
+            "caption": "Existential crisis caption.",
+            "comments": [
+                "I like this post",
+                "I like this post",
+                "I like this post"
+            ],
+            "likes": 2024,
+            "isLikedByYou": true,
+            "avatar": "src/public/profile-pic-8.jpg"
+        },
+        {
+            "alt": "image9",
+            "src": "src/public/post-image9.jpg",
+            "fullName": "Lars Weirshlom",
+            "username": "larsbars",
+            "time": "1w",
+            "isFollowing": false,
+            "caption": "Probably a picture of a car or a climb",
+            "comments": [
+                "I like this post"
+            ],
+            "likes": 530,
+            "isLikedByYou": true,
+            "avatar": "src/public/profile-pic-9.jpg"
+        },
+        {
+            "alt": "image10",
+            "src": "src/public/post-image10.jpg",
+            "fullName": "Brian Litwan",
+            "username": "brian.litwan",
+            "time": "2w",
+            "isFollowing": true,
+            "caption": "I like cheese more than Vina.",
+            "comments": [],
+            "likes": 1,
+            "isLikedByYou": false,
+            "avatar": "src/public/profile-pic-10.jpg"
+        }
+    ]
+}

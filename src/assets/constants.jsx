@@ -144,9 +144,9 @@ export const MessagesLogo = () => (
     </svg>
 );
 
-export const NotificationsLogo = () => (
+export const LikeLogo = () => (
     <svg
-        aria-label='Notifications'
+        aria-label='Like'
         color='rgb(245, 245, 245)'
         fill='rgb(245, 245, 245)'
         height='24'

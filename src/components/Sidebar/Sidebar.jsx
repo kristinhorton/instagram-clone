@@ -3,7 +3,7 @@ import { Link as RouterLink } from 'react-router-dom'
 
 //components
 import { Avatar, Box, Flex, Link, Tooltip } from '@chakra-ui/react'
-import { CreatePostLogo, InstagramLogo, InstagramMobileLogo, NotificationsLogo, SearchLogo } from '../../assets/constants'
+import { CreatePostLogo, InstagramLogo, InstagramMobileLogo, LikeLogo, SearchLogo } from '../../assets/constants'
 import { AiFillHome } from 'react-icons/ai'
 import { BiLogOut } from 'react-icons/bi'
 
@@ -19,7 +19,7 @@ export const Sidebar = () => {
             text: 'Search',
         },
         {
-            icon: <NotificationsLogo />,
+            icon: <LikeLogo />,
             text: 'Notifcations',
         },
         {
