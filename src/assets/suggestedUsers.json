@@ -1,0 +1,28 @@
+{
+    "users": [
+        {
+            "username": "john.doe",
+            "avatar": "src/public/profile-pic-3.jpg",
+            "fullname": "John Doe",
+            "totalFollowers": "40"
+        },
+        {
+            "username": "smithy.jane",
+            "avatar": "src/public/profile-pic-6.jpg",
+            "fullname": "Jane Smith",
+            "totalFollowers": "500"
+        },
+        {
+            "username": "weirdassuser",
+            "avatar": "src/public/profile-pic-9.jpg",
+            "fullname": "Weird Al",
+            "totalFollowers": "3500"
+        },
+        {
+            "username": "iver.bon",
+            "avatar": "src/public/profile-pic-1.jpg",
+            "fullname": "Bon Iver",
+            "totalFollowers": "4M"
+        }
+    ]
+}

@@ -17,7 +17,7 @@ export const HomePage = () => {
           <Feed />
         </Box>
         <Box
-          flex={1}
+          flex={2}
           mr={20}
           display={{ base: 'none', lg: 'block' }}
           maxW={300}

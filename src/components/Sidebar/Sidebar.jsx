@@ -27,7 +27,7 @@ export const Sidebar = () => {
             text: 'Create',
         },
         {
-            icon: <Avatar size={'sm'} name='Kristin Horton' />,
+            icon: <Avatar size={'sm'} name='Kristin Horton' src='src/public/profile-pic-7.jpg' />,
             text: 'Profile',
         }
     ]
