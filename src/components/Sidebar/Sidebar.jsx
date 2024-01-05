@@ -27,8 +27,9 @@ export const Sidebar = () => {
             text: 'Create',
         },
         {
-            icon: <Avatar size={'sm'} name='Kristin Horton' src='src/public/profile-pic-7.jpg' />,
+            icon: <Avatar size={'sm'} name='Kristin Horton' src='src/public/JPO02037_Original.jpg' />,
             text: 'Profile',
+            link: '/profile'
         }
     ]
 
@@ -48,7 +49,7 @@ export const Sidebar = () => {
                     to={'/'}
                     as={RouterLink}
                     pl={2}
-                    display={{ base: 'none', md: 'block' }}
+                    display={{ base: 'none', lg: 'block' }}
                     cursor={'pointer'}
                 >
                     <InstagramLogo />
@@ -57,7 +58,7 @@ export const Sidebar = () => {
                     to={'/'}
                     as={RouterLink}
                     p={2}
-                    display={{ base: 'block', md: 'none' }}
+                    display={{ base: 'block', lg: 'none' }}
                     cursor={'pointer'}
                     borderRadius={6}
                     _hover={{
@@ -76,7 +77,7 @@ export const Sidebar = () => {
                             placement={'right'}
                             ml={1}
                             openDelay={500}
-                            display={{ base: 'block', md: 'none' }}
+                            display={{ base: 'block', lg: 'none' }}
                         >
                             <Link
                                 display={'flex'}
@@ -92,7 +93,7 @@ export const Sidebar = () => {
                                 color='rgb(245, 245, 245)'
                             >
                                 {item.icon}
-                                <Box display={{ base: 'none', md: 'block' }}>
+                                <Box display={{ base: 'none', lg: 'block' }}>
                                     {item.text}
                                 </Box>
                             </Link>
@@ -105,7 +106,7 @@ export const Sidebar = () => {
                     placement={'right'}
                     ml={1}
                     openDelay={500}
-                    display={{ base: 'block', md: 'none' }}
+                    display={{ base: 'block', lg: 'none' }}
                 >
                     <Link
                         display={'flex'}
@@ -122,7 +123,7 @@ export const Sidebar = () => {
                         color='rgb(245, 245, 245)'
                     >
                         <BiLogOut size={24} />
-                        <Box display={{ base: 'none', md: 'block' }}>
+                        <Box display={{ base: 'none', lg: 'block' }}>
                             {'Log Out'}
                         </Box>
                     </Link>

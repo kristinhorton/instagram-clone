@@ -8,10 +8,10 @@ import {Sidebar} from '../components/Sidebar/Sidebar'
 export const PageLayout = ({ children }) => {
     const { pathname } = useLocation()
     return (
-        <Flex>
+        <Flex bg='black'>
             {/* Left side bar */}
             {pathname !== '/auth' ?
-                <Box w={{ base: "70px", md: "240px" }}>
+                <Box w={{ base: "70px", lg: "240px" }}>
                     <Sidebar />
                 </Box>
                 :
@@ -19,7 +19,7 @@ export const PageLayout = ({ children }) => {
             }
 
             {/* Right page content */}
-            <Box flex={1} w={{ base: 'calc(100%-70px)', md: 'calc(100%-240px' }}>
+            <Box flex={1} w={{ base: 'calc(100%-70px)', lg: 'calc(100%-240px' }}>
                 {children}
             </Box>
         </Flex>

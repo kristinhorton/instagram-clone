@@ -8,9 +8,9 @@ import { FaRegComment } from "react-icons/fa";
 
 
 export const PostFooter = ({ post }) => {
-  const [liked, setLiked] = useState(post.isLikedByYou)
-  const [likes, setLikes] = useState(post.likes)
-  const [commentTotal, setCommentTotal] = useState(post.comments.length - 1)
+  const [liked, setLiked] = useState(post.isLikedByYou || '')
+  const [likes, setLikes] = useState(post.likes || 0)
+  const [commentTotal, setCommentTotal] = useState(post.comments.length - 1 || 0)
   const [newCommentValue, setNewCommentValue] = useState()
 
   const handleLike = () => {
@@ -26,10 +26,9 @@ export const PostFooter = ({ post }) => {
 
   const handleCommentInputChange = (e) => {
     setNewCommentValue(e.target.value)
-    console.log(`new comment: ${e.target.value}`)
   }
 
-  const incrementCommentTodal = () => {
+  const incrementCommentTotal = () => {
     setCommentTotal(commentTotal + 1)
     setNewCommentValue('')
   }
@@ -95,7 +94,7 @@ export const PostFooter = ({ post }) => {
                 fontWeight={600}
                 cursor='pointer'
                 _hover={{ color: 'white' }}
-                onClick={incrementCommentTodal}
+                onClick={incrementCommentTotal}
               >
                 Post
               </Button>

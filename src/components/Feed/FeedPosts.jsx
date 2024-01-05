@@ -6,7 +6,7 @@ import { Container } from '@chakra-ui/react'
 import { FeedPost } from './FeedPost'
 import { LoadingFeed } from '../LoadingFeed/LoadingFeed'
 
-export const Feed = () => {
+export const FeedPosts = () => {
     const [isLoading, setIsLoading] = useState(true)
     const skeletonPosts = [0, 1, 2]
 

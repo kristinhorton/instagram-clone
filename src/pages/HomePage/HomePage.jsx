@@ -1,5 +1,5 @@
 import React from 'react'
-import { Feed } from '../../components/Feed/Feed'
+import { FeedPosts } from '../../components/Feed/FeedPosts'
 import { SuggestedUsers } from '../../components/SuggestedUsers/SuggestedUsers'
 
 //components
@@ -14,7 +14,7 @@ export const HomePage = () => {
           flex={4}
           py={10}
         >
-          <Feed />
+          <FeedPosts />
         </Box>
         <Box
           flex={2}
