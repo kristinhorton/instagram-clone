@@ -2,7 +2,7 @@ import { Routes, Route, Navigate } from "react-router-dom"
 import PageLayout from "./layouts/PageLayout"
 import HomePage from "./pages/HomePage/HomePage"
 import AuthPage from "./pages/AuthPage/AuthPage"
-import { ProfilePage } from "./ProfilePage/ProfilePage"
+import { ProfilePage } from "./pages/ProfilePage/ProfilePage"
 import { useAuthState } from "react-firebase-hooks/auth"
 import { auth } from "./firebase/firebase"
 

@@ -1,13 +1,15 @@
 import useAuthStore from '../../store/authStore'
-import { useLocation } from 'react-router-dom'
+import useUserProfileStore from '../../store/userProfileStore'
 
 //components
-import { Avatar, Button, Flex, VStack, Text } from '@chakra-ui/react'
+import { Avatar, Button, Flex, VStack, Text, useDisclosure } from '@chakra-ui/react'
+import EditProfile from './EditProfile'
 
 export const ProfileHeader = () => {
-    const authUser = useAuthStore((state) => state.user)
-    const { pathname } = useLocation()
-    const canEditProfile = pathname === `/${authUser.username}`
+    const { isLoading, userProfile } = useUserProfileStore()
+    const { isOpen, onOpen, onClose } = useDisclosure()
+    const authUser = useAuthStore(state => state.user)
+    const canEditProfile = (authUser && (authUser.username === userProfile.username))
 
     return (
         <Flex
@@ -17,9 +19,9 @@ export const ProfileHeader = () => {
         >
 
             <Avatar
-                name={authUser.fullname}
-                alt={`${authUser.username} avatar`}
-                src={authUser.profilePictureHeader}
+                name={userProfile.fullname}
+                alt={`${userProfile.username} avatar`}
+                src={userProfile.profilePictureURL}
                 size={{ base: 'xl', md: '2xl' }}
                 showBorder={true}
                 justifySelf='center'
@@ -39,21 +41,31 @@ export const ProfileHeader = () => {
                     alignItems='center'
                     w='full'
                 >
-                    <Text fontSize={{ base: 'sm', md: 'lg' }}>{authUser.username}</Text>
-                    {canEditProfile ?
+                    <Text fontSize={{ base: 'sm', md: 'lg' }}>{userProfile.username}</Text>
+                    {canEditProfile &&
                         <Flex gap={4} alignItems='center' justifyContent='center'>
                             <Button
                                 color='#F5F5F5'
                                 bg='#363636'
                                 _hover={{ bg: 'whiteAlhpa.800' }}
                                 size={{ base: 'xs', md: 'sm' }}
+                                onClick={onOpen}
                             >
                                 Edit Profile
                             </Button>
                         </Flex>
-                        : null
                     }
-
+                    {!canEditProfile &&
+                        <Flex gap={4} alignItems='center' justifyContent='center'>
+                            <Button
+                                color='white'
+                                bg='blue.500'
+                                size={{ base: 'xs', md: 'sm' }}
+                            >
+                                Follow
+                            </Button>
+                        </Flex>
+                    }
                 </Flex>
 
                 <Flex
@@ -62,26 +74,27 @@ export const ProfileHeader = () => {
                     fontSize={{ base: 'xs', md: 'sm' }}
                 >
                     <Text>
-                        <Text as='span' fontWeight='bold' mr={1}>{authUser.posts}</Text>
+                        <Text as='span' fontWeight='bold' mr={1}>{userProfile.posts.length}</Text>
                         Posts
                     </Text>
                     <Text>
-                        <Text as='span' fontWeight='bold' mr={1}>{authUser.folloers}</Text>
+                        <Text as='span' fontWeight='bold' mr={1}>{userProfile.followers.length}</Text>
                         Followers
                     </Text>
                     <Text>
-                        <Text as='span' fontWeight='bold' mr={1}>{authUser.following}</Text>
+                        <Text as='span' fontWeight='bold' mr={1}>{userProfile.following.length}</Text>
                         Following
                     </Text>
                 </Flex>
 
                 <Flex alignItems='center' gap={4}>
                     <Text fontSize='sm' fontWeight='bold'>
-                        {authUser.fullname}
+                        {userProfile.fullname}
                     </Text>
                 </Flex>
-                <Text fontSize='sm'>{authUser.bio}</Text>
+                <Text fontSize='sm'>{userProfile.bio}</Text>
             </VStack>
+            {isOpen && <EditProfile isOpen={isOpen} onClose={onClose} />}
         </Flex>
     )
 }
