@@ -20,7 +20,7 @@ export const SuggestedUsers = () => {
       }
       {!isLoading &&
 
-        <VStack py={8} px={6} gap={4} w='full'>
+        <VStack py={8} gap={4} w='full'>
           <SuggestedHeader />
           <Flex alignItems='center' justifyContent='space-between' w='full'>
             <Text fontSize={12} fontWeight='bold' color='gray.500'>

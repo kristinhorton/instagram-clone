@@ -1,29 +1,45 @@
-import { Avatar, Button,  Text, Flex, VStack, Link, HStack } from "@chakra-ui/react"
-import { Link as RouterLink } from 'react-router-dom'
+import { Avatar, Button, Text, Flex, VStack, HStack } from "@chakra-ui/react"
+import { Link } from 'react-router-dom'
+import useLogout from "../../hooks/useLogout"
+import useAuthStore from "../../store/authStore"
 
 export const SuggestedHeader = () => {
+    const { handleLogout, loading, error } = useLogout()
+    const authUser = useAuthStore((state) => state.user)
+
+    if (!authUser) return null
     return (
         <Flex justifyContent='space-between' alignItems='center' w='full' gap={12}>
             <HStack gap={2}>
-                <Avatar name='Kristin Horton' src='src/public/profile-pic-7.jpg' size='md' />
-                <VStack spacing={0}>
-                    <Text fontSize={12} fontWeight='bold'>
-                        kristinhorton
-                    </Text>
-                    <Text fontSize={11}>
-                        Kristin Horton
-                    </Text>
+                <Link
+                    to={`${authUser.username}`}
+                >
+                    <Avatar name={authUser.fullname} src={authUser.profilePictureUrl} size='md' />
+                </Link>
+                <VStack spacing={0} alignItems='flex-start'>
+                    <Link
+                        to={`/${authUser?.username}`}
+                    >
+                        <Text fontSize={12} fontWeight='bold'>
+                            {authUser.username}
+                        </Text>
+                        <Text fontSize={11}>
+                            {authUser.fullname}
+                        </Text>
+                    </Link>
                 </VStack>
             </HStack>
             <Button
-                as={RouterLink}
-                to='/auth'
+                size='xs'
+                background='transparent'
                 fontSize={12}
                 fontWeight='bold'
                 color='blue.400'
                 variant='ghost'
-                _hover={{ color: 'gray.400' }}
+                _hover={{ background: 'transparent' }}
                 p={0}
+                onClick={handleLogout}
+                isLoading={loading}
             >
                 Log Out
             </Button>

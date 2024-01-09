@@ -1,9 +1,14 @@
-import React from 'react'
+import useAuthStore from '../../store/authStore'
+import { useLocation } from 'react-router-dom'
 
 //components
 import { Avatar, Button, Flex, VStack, Text } from '@chakra-ui/react'
 
 export const ProfileHeader = () => {
+    const authUser = useAuthStore((state) => state.user)
+    const { pathname } = useLocation()
+    const canEditProfile = pathname === `/${authUser.username}`
+
     return (
         <Flex
             gap={{ base: 4, sm: 10 }}
@@ -12,9 +17,9 @@ export const ProfileHeader = () => {
         >
 
             <Avatar
-                name='Kristin Horton'
-                alt='kristinhorton avatar'
-                src='src/public/JPO02037_Original.jpg'
+                name={authUser.fullname}
+                alt={`${authUser.username} avatar`}
+                src={authUser.profilePictureHeader}
                 size={{ base: 'xl', md: '2xl' }}
                 showBorder={true}
                 justifySelf='center'
@@ -34,17 +39,21 @@ export const ProfileHeader = () => {
                     alignItems='center'
                     w='full'
                 >
-                    <Text fontSize={{ base: 'sm', md: 'lg' }}>kristinhorton</Text>
-                    <Flex gap={4} alignItems='center' justifyContent='center'>
-                        <Button
-                            color='#F5F5F5'
-                            bg='#363636'
-                            _hover={{ bg: 'whiteAlhpa.800' }}
-                            size={{ base: 'xs', md: 'sm' }}
-                        >
-                            Edit Profile
-                        </Button>
-                    </Flex>
+                    <Text fontSize={{ base: 'sm', md: 'lg' }}>{authUser.username}</Text>
+                    {canEditProfile ?
+                        <Flex gap={4} alignItems='center' justifyContent='center'>
+                            <Button
+                                color='#F5F5F5'
+                                bg='#363636'
+                                _hover={{ bg: 'whiteAlhpa.800' }}
+                                size={{ base: 'xs', md: 'sm' }}
+                            >
+                                Edit Profile
+                            </Button>
+                        </Flex>
+                        : null
+                    }
+
                 </Flex>
 
                 <Flex
@@ -53,27 +62,25 @@ export const ProfileHeader = () => {
                     fontSize={{ base: 'xs', md: 'sm' }}
                 >
                     <Text>
-                        <Text as='span' fontWeight='bold' mr={1}>10</Text>
+                        <Text as='span' fontWeight='bold' mr={1}>{authUser.posts}</Text>
                         Posts
                     </Text>
                     <Text>
-                        <Text as='span' fontWeight='bold' mr={1}>300</Text>
+                        <Text as='span' fontWeight='bold' mr={1}>{authUser.folloers}</Text>
                         Followers
                     </Text>
                     <Text>
-                        <Text as='span' fontWeight='bold' mr={1}>298</Text>
+                        <Text as='span' fontWeight='bold' mr={1}>{authUser.following}</Text>
                         Following
                     </Text>
                 </Flex>
 
                 <Flex alignItems='center' gap={4}>
                     <Text fontSize='sm' fontWeight='bold'>
-                        Kristin Horton
+                        {authUser.fullname}
                     </Text>
                 </Flex>
-                <Text fontSize='sm'>
-                    just a girl tryna survive this world
-                </Text>
+                <Text fontSize='sm'>{authUser.bio}</Text>
             </VStack>
         </Flex>
     )
