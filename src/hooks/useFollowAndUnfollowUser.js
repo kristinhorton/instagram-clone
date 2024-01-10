@@ -6,7 +6,7 @@ import { db } from '../firebase/firebase'
 import { arrayRemove, arrayUnion, doc, updateDoc } from 'firebase/firestore'
 
 const useFollowAndUnfollowUser = (userId) => {
-    const [isFollowingOrUnfollowing, setIsFollowingOrUnfollowing] = useState(false)
+    const [isUpdating, setIsUpdating] = useState(false)
     const [isFollowing, setIsFollowing] = useState(false)
     const authUser = useAuthStore((state) => state.user)
     const setAuthUser = useAuthStore((state) => state.setUser)
@@ -14,7 +14,7 @@ const useFollowAndUnfollowUser = (userId) => {
     const showToast = useShowToast()
 
     const handleFollowAndUnfollow = async () => {
-        setIsFollowingOrUnfollowing(true)
+        setIsUpdating(true)
         try {
             //grab the authenticated user, and the user to follow or unfollow
             const currentUserRef = doc(db, 'users', authUser.uid)
@@ -38,11 +38,13 @@ const useFollowAndUnfollowUser = (userId) => {
                     following: authUser.following.filter(uid => uid !== userId)
                 })
 
-                //remove authenticated user from user to unfollow's followers array
-                setUserProfile({
-                    ...userProfile,
-                    followers: userProfile.followers.filter(uid => uid !== authUser.uid)
-                })
+                if (userProfile) {
+                    //remove authenticated user from user to unfollow's followers array
+                    setUserProfile({
+                        ...userProfile,
+                        followers: userProfile.followers.filter(uid => uid !== authUser.uid)
+                    })
+                }
 
                 //update local storage for authenticated user
                 localStorage.setItem('user-info', JSON.stringify({
@@ -60,11 +62,13 @@ const useFollowAndUnfollowUser = (userId) => {
                     following: [...authUser.following, userId]
                 })
 
-                //add authenticated user to user to follow's followers array
-                setUserProfile({
-                    ...userProfile,
-                    followers: [...userProfile.followers, authUser.uid]
-                })
+                if (userProfile) {
+                    //add authenticated user to user to follow's followers array
+                    setUserProfile({
+                        ...userProfile,
+                        followers: [...userProfile.followers, authUser.uid]
+                    })
+                }
 
                 //update local storage for authenticated user
                 localStorage.setItem('user-info', JSON.stringify({
@@ -77,9 +81,10 @@ const useFollowAndUnfollowUser = (userId) => {
             }
         } catch (error) {
             showToast('Error', error.message, 'error')
+            console.log(error)
         } finally {
-            //update isFollowingOrUnfollowing state
-            setIsFollowingOrUnfollowing(false)
+            //update isUpdating state
+            setIsUpdating(false)
         }
     }
 
@@ -90,7 +95,7 @@ const useFollowAndUnfollowUser = (userId) => {
         }
     }, [authUser, userId]);
 
-    return { isFollowing, isFollowingOrUnfollowing, handleFollowAndUnfollow }
+    return { isFollowing, isUpdating, handleFollowAndUnfollow }
 }
 
 export default useFollowAndUnfollowUser

@@ -3,20 +3,15 @@ import useSearchUser from "../../hooks/useSearchUser"
 
 import { Button, Flex, FormControl, HStack, Input, InputGroup, InputLeftElement, Modal, ModalBody, ModalCloseButton, ModalContent, ModalHeader, ModalOverlay, Spinner, Stack } from "@chakra-ui/react"
 import { CiSearch } from "react-icons/ci"
-import SearchUser from "./SearchUser"
+import SuggestedUser from '../SuggestedUsers/SuggestedUser'
 
 const SearchModal = ({ onClose, isOpen }) => {
     const searchTermRef = useRef(null)
-    const {
-        isLoading,
-        searchUser,
-        searchError,
-        getSearchUser
-    } = useSearchUser()
+    const { isLoading, getUserProfile, user, setUser } = useSearchUser()
 
     const handleSearch = (e) => {
         e.preventDefault()
-        getSearchUser(searchTermRef.current.value)
+        getUserProfile(searchTermRef.current.value)
     }
 
     return (
@@ -59,16 +54,12 @@ const SearchModal = ({ onClose, isOpen }) => {
                             <Flex w='full' alignItems='center' justifyContent='center'>
                                 <Spinner size='sm' />
                             </Flex>}
-                        {!isLoading && searchUser && (
+                        {!isLoading && user && (
                             <Flex w='full' alignItems='center' justifyContent='flex-start'>
-                                <SearchUser
-                                    username={searchUser.username}
-                                    fullname={searchUser.fullname}
-                                    profilePictureURL={searchUser.profilePictureURL}
-                                />
+                                <SuggestedUser user={user} setUser={setUser} />
                             </Flex>
                         )}
-                        {!isLoading && searchError && (
+                        {!isLoading && !user && (
                             <Flex w='full' alignItems='center' justifyContent='center'>
                                 No results found.
                             </Flex>

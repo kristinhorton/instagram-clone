@@ -7,7 +7,7 @@ import EditProfile from './EditProfile'
 
 export const ProfileHeader = () => {
     const { isLoading, userProfile } = useUserProfileStore()
-    const { isFollowing, isFollowingOrUnfollowing, handleFollowAndUnfollow } = useFollowAndUnfollowUser(userProfile?.uid)
+    const { isFollowing, isUpdating, handleFollowAndUnfollow } = useFollowAndUnfollowUser(userProfile?.uid)
     const { isOpen, onOpen, onClose } = useDisclosure()
     const authUser = useAuthStore(state => state.user)
     const canEditProfile = (authUser && (authUser.username === userProfile.username))
@@ -64,7 +64,7 @@ export const ProfileHeader = () => {
                                 color='white'
                                 bg='blue.500'
                                 size={{ base: 'xs', md: 'sm' }}
-                                isLoading={isFollowingOrUnfollowing}
+                                isLoading={isUpdating}
                                 onClick={handleFollowAndUnfollow}
                             >
                                 {isFollowing ? 'Unfollow' : 'Follow'}

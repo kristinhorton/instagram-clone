@@ -24,7 +24,6 @@ const Notifications = () => {
                 w={{ base: 10, md: 'full' }}
                 justifyContent={{ base: 'center', md: 'flex-start' }}
                 color='rgb(245, 245, 245)'
-                isDisabled={true}
             >
                 <LikeLogo size={24} />
                 <Box display={{ base: 'none', lg: 'block' }}>
