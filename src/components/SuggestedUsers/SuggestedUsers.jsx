@@ -23,11 +23,11 @@ export const SuggestedUsers = () => {
         <VStack py={8} gap={4} w='full'>
           <SuggestedHeader />
           <Flex alignItems='center' justifyContent='space-between' w='full'>
-            <Text fontSize={12} fontWeight='bold' color='gray.500'>
+            <Text fontSize={14} fontWeight='bold' color='gray.500'>
               Suggested For You
             </Text>
             <Text
-              fontSize={12}
+              fontSize={14}
               fontWeight='bold'
               color='blue.400'
               cursor='pointer'

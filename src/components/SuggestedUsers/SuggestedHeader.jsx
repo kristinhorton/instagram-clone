@@ -19,14 +19,14 @@ export const SuggestedHeader = () => {
                         src={authUser?.profilePictureURL}
                         size='md' />
                 </Link>
-                <VStack spacing={0} alignItems='flex-start'>
+                <VStack spacing={0} alignItems='center' justifyContent='flex-start'>
                     <Link
                         to={`/${authUser?.username}`}
                     >
-                        <Text fontSize={12} fontWeight='bold'>
+                        <Text fontSize={14} fontWeight='bold'>
                             {authUser?.username}
                         </Text>
-                        <Text fontSize={11}>
+                        <Text fontSize={14}>
                             {authUser?.fullname}
                         </Text>
                     </Link>
@@ -35,7 +35,7 @@ export const SuggestedHeader = () => {
             <Button
                 size='xs'
                 background='transparent'
-                fontSize={12}
+                fontSize={14}
                 fontWeight='bold'
                 color='blue.400'
                 variant='ghost'

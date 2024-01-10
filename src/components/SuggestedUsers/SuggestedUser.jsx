@@ -10,13 +10,13 @@ export const SuggestedUser = ({ avatar, followers, name, username }) => {
                 <Avatar src={avatar} name={name} size='md' />
                 <VStack spacing={0} alignItems='flex-start' justifyContent='flex-start'>
                     <Box
-                        fontSize={12}
+                        fontSize={14}
                         fontWeight='bold'
                     >
                         {name}
                     </Box>
                     <Box
-                        fontSize={11}
+                        fontSize={14}
                         color='gray.500'
                     >
                         {username}
@@ -24,7 +24,7 @@ export const SuggestedUser = ({ avatar, followers, name, username }) => {
                 </VStack>
             </HStack>
             <Button
-                fontSize={12}
+                fontSize={14}
                 fontWeight='bold'
                 color='blue.400'
                 variant='ghost'
