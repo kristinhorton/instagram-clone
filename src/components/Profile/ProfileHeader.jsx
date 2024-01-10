@@ -1,15 +1,18 @@
 import useAuthStore from '../../store/authStore'
 import useUserProfileStore from '../../store/userProfileStore'
+import useFollowAndUnfollowUser from '../../hooks/useFollowAndUnfollowUser'
 
-//components
 import { Avatar, Button, Flex, VStack, Text, useDisclosure } from '@chakra-ui/react'
 import EditProfile from './EditProfile'
 
 export const ProfileHeader = () => {
     const { isLoading, userProfile } = useUserProfileStore()
+    const { isFollowing, isFollowingOrUnfollowing, handleFollowAndUnfollow } = useFollowAndUnfollowUser(userProfile?.uid)
     const { isOpen, onOpen, onClose } = useDisclosure()
     const authUser = useAuthStore(state => state.user)
     const canEditProfile = (authUser && (authUser.username === userProfile.username))
+    const idToFollowOrUnfollow = userProfile.uid
+
 
     return (
         <Flex
@@ -61,8 +64,10 @@ export const ProfileHeader = () => {
                                 color='white'
                                 bg='blue.500'
                                 size={{ base: 'xs', md: 'sm' }}
+                                isLoading={isFollowingOrUnfollowing}
+                                onClick={handleFollowAndUnfollow}
                             >
-                                Follow
+                                {isFollowing ? 'Unfollow' : 'Follow'}
                             </Button>
                         </Flex>
                     }
