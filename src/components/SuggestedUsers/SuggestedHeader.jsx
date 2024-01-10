@@ -12,19 +12,22 @@ export const SuggestedHeader = () => {
         <Flex justifyContent='space-between' alignItems='center' w='full' gap={12}>
             <HStack gap={2}>
                 <Link
-                    to={`${authUser.username}`}
+                    to={`${authUser?.username}`}
                 >
-                    <Avatar name={authUser.fullname} src={authUser.profilePictureUrl} size='md' />
+                    <Avatar
+                        name={authUser?.fullname}
+                        src={authUser?.profilePictureURL}
+                        size='md' />
                 </Link>
                 <VStack spacing={0} alignItems='flex-start'>
                     <Link
                         to={`/${authUser?.username}`}
                     >
                         <Text fontSize={12} fontWeight='bold'>
-                            {authUser.username}
+                            {authUser?.username}
                         </Text>
                         <Text fontSize={11}>
-                            {authUser.fullname}
+                            {authUser?.fullname}
                         </Text>
                     </Link>
                 </VStack>
