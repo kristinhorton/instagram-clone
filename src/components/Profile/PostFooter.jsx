@@ -1,16 +1,15 @@
-import React, { useState } from 'react'
-
-//components
 import { Box, Button, Divider, Flex, Input, InputGroup, InputRightElement, Text } from '@chakra-ui/react'
-import { FaHeart } from "react-icons/fa";
-import { FaRegHeart } from "react-icons/fa";
-import { FaRegComment } from "react-icons/fa";
+import { useState } from 'react';
+import { FaHeart } from 'react-icons/fa';
+import { FaRegHeart } from 'react-icons/fa';
+import { FaRegComment } from 'react-icons/fa';
 
 
-export const PostFooter = ({ numLikes, caption, username }) => {
+export const PostFooter = ({ numLikes, createdAt }) => {
     const [liked, setLiked] = useState(false)
     const [likes, setLikes] = useState(numLikes || 0)
     const [newCommentValue, setNewCommentValue] = useState('')
+    const formatCreatedAt = new Date(createdAt).toLocaleDateString('en-us', { year:'numeric', month:'short', day:'numeric'})
 
     const handleLike = () => {
         if (liked) {
@@ -37,7 +36,7 @@ export const PostFooter = ({ numLikes, caption, username }) => {
                 w={'full'}
                 pt={0}
                 mb={2}
-                mt={4}
+                mt={2}
             >
                 <Box
                     onClick={handleLike}
@@ -54,11 +53,8 @@ export const PostFooter = ({ numLikes, caption, username }) => {
                 {likes > 0 ? `${likes} likes` : null}
             </Text>
             <Box fontSize={12} mt={1} mb={1}>
-                <Text as={'span'} fontWeight={'bold'}>
-                    {username}
-                </Text>
                 <Text as={'span'}>
-                    {` ${caption}`}
+                    {formatCreatedAt}
                 </Text>
             </Box>
 
@@ -66,7 +62,6 @@ export const PostFooter = ({ numLikes, caption, username }) => {
                 alignItems={'center'}
                 gap={2}
                 w={'full'}
-                mb={4}
             >
                 <InputGroup>
                     <Input
