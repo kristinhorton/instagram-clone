@@ -8,15 +8,24 @@ import { db, storage } from '../firebase/firebase'
 import { deleteObject, ref } from 'firebase/storage'
 import { arrayRemove, deleteDoc, doc, updateDoc } from 'firebase/firestore'
 
+/**
+ * Custom hook for deleteing a user post
+ * @returns {Boolean} isDeleting true while delete is in progress, false otherwise
+ * @returns {Function} handleDeletePost
+ */
 const useDeletePost = () => {
     const [isDeleting, setIsDeleting] = useState(false)
     const authUser = useAuthStore((state) => state.user)
     const userProfile = useUserProfileStore((state) => state.userProfile)
     const deletePost = usePostStore((state) => state.deletePost)
-    const deletePostFromProfile = useUserProfileStore((state) => state.deletePost)
+    const decrementProfilePostCount = useUserProfileStore((state) => state.deletePost)
 
     const showToast = useShowToast()
 
+    /**
+     * Deletes a post
+     * @param {Object} post to be deleted
+     */
     const handleDeletePost = async (post) => {
         setIsDeleting(true)
         try {
@@ -37,7 +46,7 @@ const useDeletePost = () => {
             deletePost(post.id)
 
             //update the user profile store state
-            if (userProfile.uid === authUser.uid) deletePostFromProfile(post.id)
+            if (userProfile.uid === authUser.uid) decrementProfilePostCount(post.id)
 
             showToast('Success', 'Post deleted successfully', 'success')
 

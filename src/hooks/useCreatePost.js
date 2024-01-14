@@ -7,6 +7,11 @@ import { addDoc, arrayUnion, collection, doc, updateDoc } from 'firebase/firesto
 import usePostStore from '../store/postStore'
 import useUserProfileStore from '../store/userProfileStore'
 
+/**
+ * Custom hook for creating a post
+ * @returns {Boolean} isLoading true while creating a post, false otherwise
+ * @returns {Function} handleCreatePost
+ */
 const useCreatePost = () => {
     const [isLoading, setIsLoading] = useState(false)
     const authUser = useAuthStore((state) => state.user)
@@ -16,6 +21,12 @@ const useCreatePost = () => {
 
     const showToast = useShowToast()
 
+    /**
+     * 
+     * @param {String} caption of the new post
+     * @param {File} selectedFile image to upload
+     * @param {String} pathname current location
+     */
     const handleCreatePost = async (caption, selectedFile, pathname) => {
         if (isLoading) return
         if (!selectedFile) throw new Error("Please select an image")

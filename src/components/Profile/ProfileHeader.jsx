@@ -3,7 +3,7 @@ import useUserProfileStore from '../../store/userProfileStore'
 import useFollowAndUnfollowUser from '../../hooks/useFollowAndUnfollowUser'
 
 import { Avatar, Button, Flex, VStack, Text, useDisclosure } from '@chakra-ui/react'
-import EditProfile from './EditProfile'
+import EditProfileModal from './EditProfileModal'
 
 export const ProfileHeader = () => {
     const { isLoading, userProfile } = useUserProfileStore()
@@ -11,9 +11,8 @@ export const ProfileHeader = () => {
     const { isOpen, onOpen, onClose } = useDisclosure()
     const authUser = useAuthStore(state => state.user)
     const canEditProfile = (authUser && (authUser.username === userProfile.username))
-    const idToFollowOrUnfollow = userProfile.uid
 
-
+    if (isLoading) return
     return (
         <Flex
             gap={{ base: 4, sm: 10 }}
@@ -22,9 +21,9 @@ export const ProfileHeader = () => {
         >
 
             <Avatar
-                name={userProfile.fullname}
-                alt={`${userProfile.username} avatar`}
-                src={userProfile.profilePictureURL}
+                name={userProfile?.fullname}
+                alt={`${userProfile?.username} avatar`}
+                src={userProfile?.profilePictureURL}
                 size={{ base: 'xl', md: '2xl' }}
                 showBorder={true}
                 justifySelf='center'
@@ -44,7 +43,7 @@ export const ProfileHeader = () => {
                     alignItems='center'
                     w='full'
                 >
-                    <Text fontSize={{ base: 'sm', md: 'lg' }}>{userProfile.username}</Text>
+                    <Text fontSize={{ base: 'sm', md: 'lg' }}>{userProfile?.username}</Text>
                     {canEditProfile &&
                         <Flex gap={4} alignItems='center' justifyContent='center'>
                             <Button
@@ -79,27 +78,27 @@ export const ProfileHeader = () => {
                     fontSize={{ base: 'xs', md: 'sm' }}
                 >
                     <Text>
-                        <Text as='span' fontWeight='bold' mr={1}>{userProfile.posts.length}</Text>
+                        <Text as='span' fontWeight='bold' mr={1}>{userProfile?.posts.length}</Text>
                         Posts
                     </Text>
                     <Text>
-                        <Text as='span' fontWeight='bold' mr={1}>{userProfile.followers.length}</Text>
+                        <Text as='span' fontWeight='bold' mr={1}>{userProfile?.followers.length}</Text>
                         Followers
                     </Text>
                     <Text>
-                        <Text as='span' fontWeight='bold' mr={1}>{userProfile.following.length}</Text>
+                        <Text as='span' fontWeight='bold' mr={1}>{userProfile?.following.length}</Text>
                         Following
                     </Text>
                 </Flex>
 
                 <Flex alignItems='center' gap={4}>
                     <Text fontSize='sm' fontWeight='bold'>
-                        {userProfile.fullname}
+                        {userProfile?.fullname}
                     </Text>
                 </Flex>
-                <Text fontSize='sm'>{userProfile.bio}</Text>
+                <Text fontSize='sm'>{userProfile?.bio}</Text>
             </VStack>
-            {isOpen && <EditProfile isOpen={isOpen} onClose={onClose} />}
+            {isOpen && <EditProfileModal isOpen={isOpen} onClose={onClose} />}
         </Flex>
     )
 }

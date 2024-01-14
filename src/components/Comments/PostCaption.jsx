@@ -1,7 +1,7 @@
-import { Avatar, Flex, Text } from '@chakra-ui/react'
+import { Avatar, Flex, Text } from "@chakra-ui/react"
 
-export const Comment = ({ createdAt, username, avatar, text }) => {
-    const formatDate = new Date(createdAt).toLocaleDateString('en-us', { year:'numeric', month:'short', day:'numeric'})
+const PostCaption = ({ createdAt, username, avatar, text }) => {
+    const formatDate = new Date(createdAt).toLocaleDateString('en-us', { year: 'numeric', month: 'short', day: 'numeric' })
 
     return (
         <Flex gap={4} my={2}>
@@ -13,8 +13,9 @@ export const Comment = ({ createdAt, username, avatar, text }) => {
                     </Text>
 
                 </Flex>
-                <Text fontSize={12} color='gray'>{formatDate}</Text>
             </Flex>
         </Flex>
     )
 }
+
+export default PostCaption

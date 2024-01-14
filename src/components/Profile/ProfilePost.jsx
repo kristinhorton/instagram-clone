@@ -4,12 +4,11 @@ import { FaComment } from 'react-icons/fa'
 
 import useUserProfileStore from '../../store/userProfileStore'
 import ProfilePostModal from './ProfilePostModal'
+import useLikeandUnlikePost from '../../hooks/useLikeandUnlikePost'
 
 export const ProfilePost = ({ post }) => {
     const { isOpen, onOpen, onClose } = useDisclosure()
     const userProfile = useUserProfileStore((state) => state.userProfile)
-    const numComments = post.comments.length || 0
-    const numLikes = post.likes.length || 0
 
     return (
         <>
@@ -44,11 +43,11 @@ export const ProfilePost = ({ post }) => {
                     >
                         <Flex>
                             <AiFillHeart size={20} />
-                            <Text fontWeight='bold' ml={2}>{numLikes}</Text>
+                            <Text fontWeight='bold' ml={2}>{post?.likes?.length}</Text>
                         </Flex>
                         <Flex>
                             <FaComment size={20} />
-                            <Text fontWeight='bold' ml={2}>{numComments}</Text>
+                            <Text fontWeight='bold' ml={2}>{post?.comments?.length}</Text>
                         </Flex>
                     </Flex>
                 </Flex>

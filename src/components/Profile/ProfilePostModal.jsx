@@ -1,17 +1,16 @@
 import { Avatar, Box, Button, Divider, Flex, Image, Modal, ModalBody, ModalCloseButton, ModalContent, ModalOverlay, Text, Tooltip, VStack, useDisclosure } from '@chakra-ui/react'
 import { MdDeleteOutline } from 'react-icons/md'
-import { PostFooter } from './PostFooter'
-import { Comment } from './Comment'
+import ConfirmDeleteModal from './ConfirmDeleteModal'
+import PostFooter from './PostFooter'
+import PostComments from '../Comments/PostComments'
 
 import useAuthStore from '../../store/authStore'
 import { useEffect, useState } from 'react'
-import ConfirmDeleteModal from './ConfirmDeleteModal'
 import useDeletePost from '../../hooks/useDeletePost'
 
 const ProfilePostModal = ({ isOpen, onClose, userProfile, post }) => {
     const authUser = useAuthStore((state) => state.user)
     const userCanDelete = authUser ? userProfile.uid === authUser.uid : false
-
     const [confirmDeleteResult, setConfirmDeleteResult] = useState(false)
     const deleteModal = useDisclosure()
     const { isDeleting, handleDeletePost } = useDeletePost()
@@ -105,36 +104,16 @@ const ProfilePostModal = ({ isOpen, onClose, userProfile, post }) => {
                                 </Flex>
                                 <Divider bg='gray.500' />
 
-                                <VStack
-                                    w='full'
-                                    h='full'
-                                    maxH='630px'
-                                    alignItems='start'
-                                    overflowY='auto'>
-                                    {post.caption && (
-                                        <Comment
-                                            createdAt={post.createdAt}
-                                            username={userProfile.username}
-                                            avatar={userProfile.profilePictureURL}
-                                            text={post.caption}
-                                        />
-                                    )
-                                    }
-                                    {/* {postComments.map((com, index) => (
-                                    <Comment
-                                        key={`comment-${index}`}
-                                        createdAt={post.createdAt}
-                                        username={post.username}
-                                        avatar={com.avatar}
-                                        text={com.text}
+                                {(post.caption || post.comments) && (
+                                    <PostComments
+                                        post={post}
+                                        userProfile={userProfile}
                                     />
-                                ))
-                                } */}
-                                </VStack>
+                                )}
+
                                 <PostFooter
-                                    numLikes={post.likes.length}
-                                    username={post.username}
-                                    createdAt={post.createdAt}
+                                    post={post}
+                                    authUser={authUser}
                                 />
                             </Flex>
                         </Flex>
