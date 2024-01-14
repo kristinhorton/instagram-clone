@@ -17,8 +17,8 @@ const useCreatePostComment = () => {
 
     /**
      * Adds a comment to a post
-     * @param {Number} id 
-     * @param {String} comment 
+     * @param {Number} id
+     * @param {String} comment
      * @returns {Boolean} isCommenting true while a new comment is in progress, false otherwise
      * @returns {Function} handlePostComment
      */

@@ -29,7 +29,6 @@ const useDeletePost = () => {
     const handleDeletePost = async (post) => {
         setIsDeleting(true)
         try {
-            console.log('trying to delete....')
             //remove post from storage
             const imageRef = ref(storage, `posts/${post.id}`)
             await deleteObject(imageRef)

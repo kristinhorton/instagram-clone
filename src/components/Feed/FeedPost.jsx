@@ -1,28 +1,33 @@
-import React from 'react'
+import useGetUserById from '../../hooks/useGetUserById'
 
-//components
 import { Box, Container, Image } from '@chakra-ui/react'
-import { PostHeader } from './PostHeader'
-import { PostFooter } from './PostFooter'
+import FeedPostHeader from './FeedPostHeader'
+import FeedPostFooter from './FeedPostFooter'
 
-export const FeedPost = ({ post, index }) => {
+export const FeedPost = ({ post }) => {
+  const { isLoading, userProfile } = useGetUserById(post?.createdBy)
 
+  if (isLoading) return
   return (
-    <Container name='post-container' padding={0}>
-      <PostHeader post={post} />
-      <Box name='post-image-box' m={0} p={0}>
+    <Container padding={0}>
+      <FeedPostHeader post={post} userProfile={userProfile} />
+      <Box
+        borderRadius={4}
+        overflow='hidden'
+        boxSize='fit-content'
+        alignItems='center'
+        justifyContent='center'
+      >
         <Image
-          src={post.src}
-          alt={post.username}
-          key={`image-${index}`}
+          src={post?.imageURL}
+          key={post?.id}
           objectFit='cover'
-          borderRadius={4}
-          w="468px"
-          h="468px"
+          w='600px'
+          h='600px'
         />
       </Box>
-      <PostFooter post={post} />
-      {/* <Box w={'full'} h={'1px'} bg={'whiteAlpha.400'} mb={4} mt={4}/> */}
+      <FeedPostFooter post={post} userProfile={userProfile} />
+      <Box w='full' h='2px' mb={4} mt={4} />
     </Container>
   )
 }

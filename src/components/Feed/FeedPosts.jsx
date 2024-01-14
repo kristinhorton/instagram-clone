@@ -1,16 +1,18 @@
 import { Container } from '@chakra-ui/react'
 import { FeedPost } from './FeedPost'
 import { LoadingFeed } from '../LoadingFeed/LoadingFeed'
-import useGetUserPosts from '../../hooks/useGetUserPosts'
 import NoPostsFound from './NoPostsFound'
+
+import useGetFeedPosts from '../../hooks/useGetFeedPosts'
 
 export const FeedPosts = () => {
     const skeletonPosts = [0, 1, 2]
-    const { isLoading, posts } = useGetUserPosts()
-    const noPostsFound = !isLoading && !posts
+    const { isLoading, posts } = useGetFeedPosts()
+    const noPostsFound = !isLoading && (posts?.length == 0 || !posts)
+    const feedHasPosts = !isLoading && posts?.length > 0
 
     return (
-        <Container maxW='468px' py={10} px={2} pt={1}>
+        <Container py={10} px={2} pt={1}>
             {isLoading && (
                 <>
                     {skeletonPosts.map((_, index) => (
@@ -18,21 +20,17 @@ export const FeedPosts = () => {
                     ))}
                 </>
             )}
-
-            {(!isLoading && posts) && (
+            {feedHasPosts && (
                 <>
-                    {posts.map((post, index) => (
+                    {posts.map((post) => (
                         <FeedPost
                             post={post}
-                            index={index}
-                            key={index}
+                            key={post?.id}
                         />
                     ))}
                 </>
             )}
-
             {noPostsFound && (<NoPostsFound />)}
-
         </Container>
     )
 }

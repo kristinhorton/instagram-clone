@@ -81,7 +81,6 @@ const useFollowAndUnfollowUser = (userId) => {
             }
         } catch (error) {
             showToast('Error', error.message, 'error')
-            console.log(error)
         } finally {
             //update isUpdating state
             setIsUpdating(false)

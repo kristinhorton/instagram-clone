@@ -21,11 +21,11 @@ export const SuggestedUsers = () => {
                 Suggested For You
               </Text>
               <Text
-                fontSize={14}
+                fontSize={12}
                 fontWeight='bold'
                 color='blue.400'
                 cursor='pointer'
-                _hover={{ color: 'gray.400' }}
+                _hover={{ background: 'transparent' }}
               >
                 See All
               </Text>

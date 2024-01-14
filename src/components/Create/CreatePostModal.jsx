@@ -14,8 +14,8 @@ const CreatePostModal = ({ isOpen, onClose }) => {
     const { pathname } = useLocation()
     const { isLoading, handleCreatePost } = useCreatePost()
 
-    const handleCaptionChange = ({ target }) => {
-        setCaption(target.value)
+    const handleCaptionChange = (e) => {
+        setCaption(e.target.value)
     }
 
     const handleModalClose = () => {
@@ -80,7 +80,8 @@ const CreatePostModal = ({ isOpen, onClose }) => {
                                     <Textarea
                                         resize='none'
                                         placeholder='Post caption...'
-                                        position={'relative'}
+                                        position='relative'
+                                        spellCheck={true}
                                         onChange={handleCaptionChange}
                                     />
                                 </Box>

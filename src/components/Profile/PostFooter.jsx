@@ -1,10 +1,12 @@
 import { Box, Button, Divider, Flex, Input, InputGroup, InputRightElement, Text } from '@chakra-ui/react'
-import { useRef, useState } from 'react';
 import { FaHeart } from 'react-icons/fa';
 import { FaRegHeart } from 'react-icons/fa';
 import { FaRegComment } from 'react-icons/fa';
+
+import { useRef, useState } from 'react';
 import useCreatePostComment from '../../hooks/useCreatePostComment';
 import useLikeandUnlikePost from '../../hooks/useLikeandUnlikePost';
+import { timeElapsed } from '../../utilities/timeEsapsed';
 
 
 const PostFooter = ({ post, authUser }) => {
@@ -14,10 +16,10 @@ const PostFooter = ({ post, authUser }) => {
 
     const { isLiked, likes, handleLikeAndUnlike, isLoading } = useLikeandUnlikePost(post)
 
-    const formatCreatedAt = new Date(post.createdAt).toLocaleDateString('en-us', { year: 'numeric', month: 'short', day: 'numeric' })
+    const formatCreatedAt = timeElapsed(post?.createdAt, true)
 
     const handleSubmitComment = async () => {
-        handlePostComment(post.id, comment)
+        handlePostComment(post?.id, comment)
         setComment('')
     }
 

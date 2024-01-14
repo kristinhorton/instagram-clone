@@ -14,6 +14,7 @@ const ProfilePostModal = ({ isOpen, onClose, userProfile, post }) => {
     const [confirmDeleteResult, setConfirmDeleteResult] = useState(false)
     const deleteModal = useDisclosure()
     const { isDeleting, handleDeletePost } = useDeletePost()
+    const postHasCaptionOrComments = post?.caption || post?.comments
 
     //hook will execute when the value of confirmDeleteResult changes
     //a true value will execute the post delete
@@ -58,7 +59,7 @@ const ProfilePostModal = ({ isOpen, onClose, userProfile, post }) => {
 
                             >
                                 <Image
-                                    src={post.imageURL}
+                                    src={post?.imageURL}
                                     objectFit='cover'
                                     w='500px'
                                     h='500px'
@@ -73,12 +74,12 @@ const ProfilePostModal = ({ isOpen, onClose, userProfile, post }) => {
                                 <Flex alignItems='center' justifyContent='space-between' mb={2}>
                                     <Flex alignItems='center' gap={4}>
                                         <Avatar
-                                            name={userProfile.fullname}
-                                            alt={userProfile.fullname}
-                                            src={userProfile.profilePictureURL}
+                                            name={userProfile?.fullname}
+                                            alt={userProfile?.fullname}
+                                            src={userProfile?.profilePictureURL}
                                             size='sm'
                                         />
-                                        <Text fontWeight='bold' fontSize={12}>{userProfile.username}</Text>
+                                        <Text fontWeight='bold' fontSize={12}>{userProfile?.username}</Text>
                                     </Flex>
                                     {userCanDelete && (
                                         <Tooltip
@@ -104,7 +105,7 @@ const ProfilePostModal = ({ isOpen, onClose, userProfile, post }) => {
                                 </Flex>
                                 <Divider bg='gray.500' />
 
-                                {(post.caption || post.comments) && (
+                                {postHasCaptionOrComments && (
                                     <PostComments
                                         post={post}
                                         userProfile={userProfile}

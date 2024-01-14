@@ -24,7 +24,7 @@ const useLikeandUnlikePost = (post) => {
 
             //update the post
             const postRef = doc(db, 'posts', post.id)
-            const newPost = await updateDoc(postRef, {
+            await updateDoc(postRef, {
                 likes: isLiked ? arrayRemove(authUser.uid) : arrayUnion(authUser.uid)
             })
 
@@ -39,7 +39,6 @@ const useLikeandUnlikePost = (post) => {
 
         } catch (error) {
             showToast('Error', error.message, 'error')
-            console.log(error)
         } finally {
             setIsLoading(false)
         }

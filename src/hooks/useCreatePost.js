@@ -29,28 +29,29 @@ const useCreatePost = () => {
      */
     const handleCreatePost = async (caption, selectedFile, pathname) => {
         if (isLoading) return
-        if (!selectedFile) throw new Error("Please select an image")
+        if (!selectedFile) throw new Error('Please select an image')
+
         setIsLoading(true)
         const newPost = {
-            caption: caption,
+            caption: encodeURI(caption),
             likes: [],
             comments: [],
             createdAt: Date.now(),
-            createdBy: authUser.uid,
+            createdBy: authUser?.uid,
         }
 
         try {
             //the ref to the posts table where the post will go
-            const postRef = await addDoc(collection(db, "posts"), newPost)
+            const postRef = await addDoc(collection(db, 'posts'), newPost)
             //the ref to the users table where the authUser exists
-            const userRef = doc(db, "users", authUser.uid)
+            const userRef = doc(db, 'users', authUser?.uid)
             //the location in storage where the image will go
-            const imageRef = ref(storage, `posts/${postRef.id}`)
+            const imageRef = ref(storage, `posts/${postRef?.id}`)
 
             //add the new post to the auth user in the users table
-            await updateDoc(userRef, { posts: arrayUnion(postRef.id) })
+            await updateDoc(userRef, { posts: arrayUnion(postRef?.id) })
             //upload the image url to storage
-            await uploadString(imageRef, selectedFile, "data_url")
+            await uploadString(imageRef, selectedFile, 'data_url')
 
             //grab the new img url
             const downloadURL = await getDownloadURL(imageRef)
@@ -60,11 +61,12 @@ const useCreatePost = () => {
             //add the img url to the newPost object to update the userProfileStore
             newPost.imageURL = downloadURL
 
-            //update the user profile state with create post
-            if (userProfile.uid === authUser.uid) createPost({ ...newPost, id: postRef.id })
-
-            // //update the user profile  state with add post
-            // if (pathname !== "/" && userProfile.uid === authUser.uid) addPost({ ...newPost, id: postRef.id })
+            if (userProfile?.uid === authUser?.uid) {
+                createPost({ ...newPost, id: postRef?.id })
+            }
+            if (pathname !== '/' && userProfile?.uid === authUser?.uid) {
+                addPost({ ...newPost, id: postRef?.id })
+            }
 
         } catch (error) {
             showToast('Error', error.message, 'error')
