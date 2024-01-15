@@ -61,9 +61,12 @@ const useCreatePost = () => {
             //add the img url to the newPost object to update the userProfileStore
             newPost.imageURL = downloadURL
 
+            //create the new post in state
             if (userProfile?.uid === authUser?.uid) {
                 createPost({ ...newPost, id: postRef?.id })
             }
+
+            //only increment the number of posts in the user profile state if you're on your own profile
             if (pathname !== '/' && userProfile?.uid === authUser?.uid) {
                 addPost({ ...newPost, id: postRef?.id })
             }
