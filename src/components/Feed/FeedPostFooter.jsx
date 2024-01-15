@@ -57,7 +57,7 @@ const FeedPostFooter = ({ post, userProfile }) => {
           {post?.username}
         </Text>
         <Text as='span'>
-          {` ${post?.caption}`}
+          {` ${decodeURI(post?.caption)}`}
         </Text>
       </Box>
       <Text
