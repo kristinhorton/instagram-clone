@@ -1,9 +1,8 @@
 import useLogin from "../../hooks/useLogin"
 
 //components
-import { Alert, AlertIcon, Button, Input, InputGroup, InputRightElement } from "@chakra-ui/react"
+import { Alert, AlertIcon, Button, Input, InputGroup, InputRightElement, Text } from "@chakra-ui/react"
 import { useState } from "react"
-import { GrHide, GrView } from "react-icons/gr"
 
 export const Login = () => {
     const [inputs, setInputs] = useState({
@@ -41,7 +40,7 @@ export const Login = () => {
                         onClick={() => setShowPassword(!showPassword)}
                         _hover={{ bg: 'none' }}
                     >
-                        {showPassword ? <GrHide size={10} /> : <GrView size={10} />}
+                        {showPassword ? <Text fontSize='12' pr={2}>Hide</Text> : <Text fontSize='12' pr={2}>Show</Text>}
                     </Button>
                 </InputRightElement>
             </InputGroup>

@@ -1,5 +1,4 @@
-import { Alert, AlertDescription, AlertIcon, AlertTitle, Button, Input, InputGroup, InputRightElement } from "@chakra-ui/react"
-import { GrView, GrHide } from 'react-icons/gr'
+import { Alert, AlertIcon, Button, Input, InputGroup, InputRightElement, Text } from "@chakra-ui/react"
 import { useState } from "react"
 import { useSignUp } from "../../hooks/useSignUp"
 
@@ -60,7 +59,7 @@ export const Signup = () => {
             onClick={() => setShowPassword(!showPassword)}
             _hover={{ bg: 'none' }}
           >
-            {showPassword ? <GrHide size={10} /> : <GrView size={10} />}
+            {showPassword ? <Text fontSize='12' pr={2}>Hide</Text> : <Text fontSize='12' pr={2}>Show</Text>}
           </Button>
         </InputRightElement>
       </InputGroup>
