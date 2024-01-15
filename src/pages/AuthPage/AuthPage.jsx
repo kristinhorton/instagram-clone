@@ -13,7 +13,7 @@ export const AuthPage = () => {
                     {/* Left hand side */}
                     <Box display={{ base: "none", md: "block" }}>
                         <Image
-                            src='src/public/auth-page-image.jpg'
+                            src='/auth-page-image.jpg'
                             h={460}
                             alt='phone image'
                             borderRadius='4'
