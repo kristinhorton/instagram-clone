@@ -11,9 +11,7 @@ node_modules
 dist
 dist-ssr
 *.local
-# .eslintrc.cjs
-# .flowconfig
-# vite.config.js
+.env
 
 # Editor directories and files
 .vscode/*
