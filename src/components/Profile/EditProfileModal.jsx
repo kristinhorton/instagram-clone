@@ -16,6 +16,7 @@ import {
     ModalCloseButton,
     ModalBody,
     ModalHeader,
+    Textarea,
 } from '@chakra-ui/react'
 import useAuthStore from '../../store/authStore';
 import { useRef, useState } from 'react';
@@ -32,7 +33,7 @@ export default function EditProfile({ isOpen, onClose }) {
 
     const [inputs, setInputs] = useState({
         fullname: authUser?.fullname,
-        bio: authUser?.bio,
+        bio: decodeURI(authUser?.bio),
     });
 
 
@@ -101,10 +102,11 @@ export default function EditProfile({ isOpen, onClose }) {
 
                                 <FormControl>
                                     <FormLabel fontSize='sm'>Bio</FormLabel>
-                                    <Input
+                                    <Textarea
+                                        resize='none'
                                         placeholder='Bio'
-                                        size='sm'
-                                        type='text'
+                                        position='relative'
+                                        spellCheck={true}
                                         value={inputs.bio}
                                         onChange={(e) => setInputs({ ...inputs, bio: e.target.value })}
                                     />

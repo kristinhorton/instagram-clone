@@ -2,7 +2,7 @@ import { useState } from 'react'
 import useAuthStore from '../store/authStore'
 import useShowToast from './useShowToast'
 import { getDownloadURL, ref, uploadString } from 'firebase/storage'
-import { auth, db, storage } from '../firebase/firebase'
+import { db, storage } from '../firebase/firebase'
 import { doc, updateDoc } from 'firebase/firestore'
 import useUserProfileStore from '../store/userProfileStore'
 
@@ -17,22 +17,23 @@ const useEditProfile = () => {
         if (isLoading || !authUser) return
         setIsLoading(true)
 
-        const storageRef = ref(storage, `profilePictures/${authUser.uid}`)
-        const userDocRef = doc(db, 'users', authUser.uid)
+        const storageRef = ref(storage, `profilePictures/${authUser?.uid}`)
+        const userDocRef = doc(db, 'users', authUser?.uid)
 
         let URL = ''
         try {
             if (selectedFile) {
                 await uploadString(storageRef, selectedFile, 'data_url')
-                URL = await getDownloadURL(ref(storage, `profilePictures/${authUser.uid}`))
+                URL = await getDownloadURL(ref(storage, `profilePictures/${authUser?.uid}`))
             }
 
             const updatedUser = {
                 ...authUser,
-                fullname: inputs.fullname || authUser.fullname,
-                bio: inputs.bio || authUser.bio,
-                profilePictureURL: URL || authUser.profilePictureURL
+                fullname: inputs?.fullname || authUser?.fullname,
+                bio: encodeURI(inputs?.bio) || authUser?.bio,
+                profilePictureURL: URL || authUser?.profilePictureURL
             }
+
             //update user in firebase
             await updateDoc(userDocRef, updatedUser)
             //update user in local storage

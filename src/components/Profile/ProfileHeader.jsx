@@ -96,7 +96,7 @@ export const ProfileHeader = () => {
                         {userProfile?.fullname}
                     </Text>
                 </Flex>
-                <Text fontSize='sm'>{userProfile?.bio}</Text>
+                <Text as='span' style={{ whiteSpace: 'pre-line' }} fontWeight='400'>{decodeURI(userProfile?.bio)}</Text>
             </VStack>
             {isOpen && <EditProfileModal isOpen={isOpen} onClose={onClose} />}
         </Flex>
