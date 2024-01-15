@@ -1,7 +1,7 @@
 import { useParams, Link as RouterLink } from 'react-router-dom'
 
 //components
-import { Container, Flex, Link, Text } from '@chakra-ui/react'
+import { Box, Container, Flex, Link, Text } from '@chakra-ui/react'
 import { ProfileHeader } from '../../components/Profile/ProfileHeader'
 import { ProfileTabs } from '../../components/Profile/ProfileTabs'
 import { ProfilePosts } from '../../components/Profile/ProfilePosts'
@@ -20,19 +20,20 @@ export const ProfilePage = () => {
         <Container maxW='container-lg' py={5}>
             <Flex
                 maxW='75%'
-                py={10}
-                px={4}
-                pl={{ base: 4, md: 10 }}
+                px={{ base: 2, small: 4 }}
                 w='full'
                 mx='auto'
                 flexDirection='column'
             >
-                {isLoading && (
-                    <LoadingProfileHeader />
-                )}
-                {!isLoading && userProfile && (
-                    <ProfileHeader user={userProfile} />
-                )}
+                <Box flex={2} py={10}>
+
+                    {isLoading && (
+                        <LoadingProfileHeader />
+                    )}
+                    {!isLoading && userProfile && (
+                        <ProfileHeader user={userProfile} />
+                    )}
+                </Box>
             </Flex>
             <Flex
                 px={{ base: 2, small: 4 }}
@@ -42,8 +43,10 @@ export const ProfilePage = () => {
                 borderColor='whiteAlpha.200'
                 flexDirection='column'
             >
-                <ProfileTabs />
-                <ProfilePosts />
+                <Box>
+                    <ProfileTabs />
+                    <ProfilePosts />
+                </Box>
             </Flex>
         </Container>
     )

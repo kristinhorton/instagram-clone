@@ -15,11 +15,10 @@ export const ProfileHeader = () => {
     if (isLoading) return
     return (
         <Flex
-            gap={{ base: 4, sm: 10 }}
-            ps={10}
+            gap={{ base: 2, sm: 10 }}
+            ps={{base: 0, sm: 10}}
             direction={{ base: 'column', sm: 'row' }}
         >
-
             <Avatar
                 name={userProfile?.fullname}
                 alt={`${userProfile?.username} avatar`}
@@ -30,7 +29,6 @@ export const ProfileHeader = () => {
                 alignSelf='flex-start'
                 mx='auto'
             />
-
             <VStack
                 alignItems='start'
                 gap={2}
@@ -38,7 +36,7 @@ export const ProfileHeader = () => {
                 flex={1}
             >
                 <Flex
-                    gap={4}
+                    gap={{base: 2, sm: 4}}
                     direction={{ base: 'column', sm: 'row' }}
                     alignItems='center'
                     w='full'
@@ -74,6 +72,7 @@ export const ProfileHeader = () => {
 
                 <Flex
                     alignItems='center'
+                    mx={{base: 'auto', sm: 0}}
                     gap={{ base: 2, sm: 4 }}
                     fontSize={{ base: 'xs', md: 'sm' }}
                 >
@@ -96,7 +95,15 @@ export const ProfileHeader = () => {
                         {userProfile?.fullname}
                     </Text>
                 </Flex>
-                <Text as='span' style={{ whiteSpace: 'pre-line' }} fontWeight='400'>{decodeURI(userProfile?.bio)}</Text>
+                <Flex alignItems='center' gap={4}>
+                    <Text
+                        as='span'
+                        fontSize={{ base: 'xs', md: 'sm' }}
+                        style={{ whiteSpace: 'pre-line' }}
+                        fontWeight='400'>
+                        {decodeURI(userProfile?.bio)}
+                    </Text>
+                </Flex>
             </VStack>
             {isOpen && <EditProfileModal isOpen={isOpen} onClose={onClose} />}
         </Flex>

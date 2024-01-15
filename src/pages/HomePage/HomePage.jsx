@@ -5,7 +5,7 @@ import { Box, Container, Flex } from '@chakra-ui/react'
 export const HomePage = () => {
   return (
     <Container maxW='container.lg'>
-      <Flex gap={20}>
+      <Flex gap={2}>
         <Box flex={2} py={10}>
           <FeedPosts />
         </Box>
