@@ -6,6 +6,7 @@ import useAuthStore from '../store/authStore'
 
 
 export const useSignUp = () => {
+    const appOwnerId = 'kkEQ0DUHI3hOjTlCdq0Aek4HYKp2'
     const [
         createUserWithEmailAndPassword,
         ,
@@ -47,8 +48,8 @@ export const useSignUp = () => {
                     fullname: inputs.fullname,
                     bio: '',
                     profilePictureURL: '',
-                    followers: [],
-                    following: [],
+                    followers: [appOwnerId],
+                    following: [appOwnerId],
                     posts: [],
                     createdAt: Date.now()
                 }

@@ -21,7 +21,7 @@ export const Navbar = () => {
                             Log in
                         </Button>
                     </Link>
-                    <Link>
+                    <Link to='/auth'>
                         <Button colorScheme='blue' variant='outline' size='sm'>
                             Sign up
                         </Button>
