@@ -5,6 +5,8 @@ import useAuthStore from "../store/authStore";
 import { useSignInWithGoogle } from 'react-firebase-hooks/auth';
 
 const useGoogleAuth = () => {
+    //id to automatically add myself to every new user's followers/following
+    const appOwnerId = 'kkEQ0DUHI3hOjTlCdq0Aek4HYKp2'
     const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(
         auth
     );
@@ -38,8 +40,8 @@ const useGoogleAuth = () => {
                     fullname: newUser.user.displayName,
                     bio: '',
                     profilePictureURL: '',
-                    followers: [],
-                    following: [],
+                    followers: [appOwnerId],
+                    following: [appOwnerId],
                     posts: [],
                     createdAt: Date.now()
                 }
