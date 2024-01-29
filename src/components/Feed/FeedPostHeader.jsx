@@ -1,52 +1,34 @@
 import { timeElapsed } from '../../utilities/timeEsapsed'
 import useFollowAndUnfollowUser from '../../hooks/useFollowAndUnfollowUser'
+import PropTypes from 'prop-types'
 
 import { Avatar, Box, Button, Flex, HStack, Text } from '@chakra-ui/react'
 import { Link } from 'react-router-dom'
+import '../../styles/Feed/FeedPostHeader.css'
 
-const FeedPostHeader = ({ post, userProfile }) => {
-    const { isFollowing, isUpdating, handleFollowAndUnfollow } = useFollowAndUnfollowUser(userProfile?.uid)
-    const formatCreatedAt = timeElapsed(post?.createdAt)
+const FeedPostHeader = ({ createdAt, userId, userName, fullName, profilePictureURL }) => {
+    const { isFollowing, isUpdating, handleFollowAndUnfollow } = useFollowAndUnfollowUser(userId)
+    const formatCreatedAt = timeElapsed(createdAt)
 
     return (
-        <Flex
-            justifyContent='space-between'
-            alignItems='center'
-            w='full'
-            my={2}
-            fontSize={12}
-        >
+        <Flex className='header-flex'>
             <HStack gap={2}>
-                <Link
-                    to={`${userProfile?.username}`}
-                    cursor='pointer'
-                >
-                    <Avatar src={userProfile?.profilePictureURL} size='sm' name={userProfile?.fullName} />
+                <Link to={`${userName}`} className='link'>
+                    <Avatar src={profilePictureURL} size='sm' name={fullName} />
                 </Link>
-                <Flex
-                    alignItems='center'
-                    gap={1}
-                >
-                    <Link
-                        to={`${userProfile?.username}`}
-                        cursor='pointer'
-
-                    >
-                        <Box fontWeight='bold' color='white'>{userProfile?.username}</Box>
+                <Flex className='username-flex'>
+                    <Link to={`${userName}`} className='link'>
+                        <Box className='username-text'>{userName}</Box>
                     </Link>
-                    <Box color='whiteAlpha.700'>{`• ${formatCreatedAt}`}</Box>
+                    <Box className='createdAt-text'>{`• ${formatCreatedAt}`}</Box>
                 </Flex>
             </HStack>
-            <Box cursor='pointer'>
+            <Box>
                 <Button
                     size='xs'
                     background='transparent'
-                    fontSize={12}
-                    fontWeight='bold'
-                    color='blue.400'
                     variant='ghost'
-                    _hover={{ background: 'transparent' }}
-                    p={0}
+                    className='follow-button'
                     onClick={handleFollowAndUnfollow}
                     isLoading={isUpdating}
                 >
@@ -58,3 +40,11 @@ const FeedPostHeader = ({ post, userProfile }) => {
 }
 
 export default FeedPostHeader
+
+FeedPostHeader.proptypes = {
+    createdAt: PropTypes.number.isRequired,
+    fullName: PropTypes.string,
+    profilePictureURL: PropTypes.string.isRequired,
+    userName: PropTypes.string.isRequired,
+    userId: PropTypes.number.isRequired
+}

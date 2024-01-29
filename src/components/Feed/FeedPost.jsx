@@ -1,33 +1,54 @@
 import useGetUserById from '../../hooks/useGetUserById'
+import PropTypes from 'prop-types'
 
-import { Box, Container, Image } from '@chakra-ui/react'
+import { Box, Container, Flex, Image } from '@chakra-ui/react'
 import FeedPostHeader from './FeedPostHeader'
 import FeedPostFooter from './FeedPostFooter'
+import '../../styles/Feed/FeedPost.css'
 
-export const FeedPost = ({ post }) => {
+const FeedPost = ({ post }) => {
   const { isLoading, userProfile } = useGetUserById(post?.createdBy)
 
   if (isLoading) return
   return (
-    <Container padding={0}>
-      <FeedPostHeader post={post} userProfile={userProfile} />
-      <Box
-        borderRadius={4}
-        overflow='hidden'
-        boxSize='fit-content'
-        alignItems='center'
-        justifyContent='center'
-      >
+    <Container className='container'>
+      <FeedPostHeader
+        createdAt={post?.createdAt}
+        userId={userProfile?.uid}
+        userName={userProfile?.username}
+        fullName={userProfile?.fullname}
+        profilePictureURL={userProfile?.profilePictureURL}
+      />
+      <Flex className='image-box'>
         <Image
           src={post?.imageURL}
           key={post?.id}
-          objectFit='cover'
-          w='600px'
-          h='600px'
+          className='image'
         />
-      </Box>
-      <FeedPostFooter post={post} userProfile={userProfile} />
-      <Box w='full' h='2px' mb={4} mt={4} />
+      </Flex>
+      <FeedPostFooter
+        post={post}
+        userProfile={userProfile}
+      />
+      <Box className='image-divider' />
     </Container>
   )
+}
+
+export default FeedPost
+
+FeedPost.proptypes = {
+  post: PropTypes.shape({
+    caption: PropTypes.string,
+    comments: PropTypes.arrayOf(PropTypes.shape({
+      createdAt: PropTypes.number.isRequired,
+      createdBy: PropTypes.string.isRequired,
+      comment: PropTypes.string.isRequired,
+      postId: PropTypes.string.isRequired
+    })),
+    createdAt: PropTypes.number.isRequired,
+    createdBy: PropTypes.string.isRequired,
+    imageURL: PropTypes.string.isRequired,
+    likes: PropTypes.arrayOf(PropTypes.string)
+  }).isRequired,
 }

@@ -1,6 +1,6 @@
 import { Container } from '@chakra-ui/react'
-import { FeedPost } from './FeedPost'
-import { LoadingFeed } from '../LoadingFeed/LoadingFeed'
+import FeedPost from './FeedPost'
+import LoadingFeed from '../Loading/LoadingFeed/LoadingFeed'
 import NoPostsFound from './NoPostsFound'
 
 import useGetFeedPosts from '../../hooks/useGetFeedPosts'
@@ -12,17 +12,17 @@ export const FeedPosts = () => {
     const feedHasPosts = !isLoading && posts?.length > 0
 
     return (
-        <Container py={10} px={2} pt={1}>
+        <Container className='container'>
             {isLoading && (
                 <>
                     {skeletonPosts.map((_, index) => (
-                        <LoadingFeed index={index} />
+                        <LoadingFeed index={index} key={index} />
                     ))}
                 </>
             )}
             {feedHasPosts && (
                 <>
-                    {posts.map((post) => (
+                    {posts.map((post, index) => (
                         <FeedPost
                             post={post}
                             key={post?.id}

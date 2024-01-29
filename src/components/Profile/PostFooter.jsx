@@ -1,31 +1,25 @@
-import { Box, Button, Divider, Flex, Input, InputGroup, InputRightElement, Text } from '@chakra-ui/react'
+import { Box, Button, Flex, Input, InputGroup, InputRightElement, Text } from '@chakra-ui/react'
 import { FaHeart } from 'react-icons/fa';
 import { FaRegHeart } from 'react-icons/fa';
 import { FaRegComment } from 'react-icons/fa';
 
+import PropTypes from 'prop-types'
 import { useRef, useState } from 'react';
-import useCreatePostComment from '../../hooks/useCreatePostComment';
-import useLikeandUnlikePost from '../../hooks/useLikeandUnlikePost';
 import { timeElapsed } from '../../utilities/timeEsapsed';
 
 
-const PostFooter = ({ post, authUser }) => {
+const ProfilePostFooter = ({ postId, createdAt, userIsAuthenticated, isLiked, likes, isLoading, isCommenting, handleLikeAndUnlike, handlePostComment }) => {
+    const formatCreatedAt = timeElapsed(createdAt, true)
     const [comment, setComment] = useState('')
-    const { isCommenting, handlePostComment } = useCreatePostComment()
     const commentRef = useRef(null)
 
-    const { isLiked, likes, handleLikeAndUnlike, isLoading } = useLikeandUnlikePost(post)
-
-    const formatCreatedAt = timeElapsed(post?.createdAt, true)
-
     const handleSubmitComment = async () => {
-        handlePostComment(post?.id, comment)
+        handlePostComment(postId, comment)
         setComment('')
     }
 
     return (
         <Box mb={0} marginTop='auto'>
-            <Divider bg='gray.500' />
             <Flex
                 alignItems={'center'}
                 gap={4}
@@ -57,7 +51,7 @@ const PostFooter = ({ post, authUser }) => {
                 </Text>
             </Box>
 
-            {authUser && (
+            {userIsAuthenticated && (
                 <Flex
                     alignItems={'center'}
                     gap={2}
@@ -97,4 +91,21 @@ const PostFooter = ({ post, authUser }) => {
     )
 }
 
-export default PostFooter
+export default ProfilePostFooter
+
+ProfilePostFooter.prototypes = {
+    userIsAuthenticated: PropTypes.bool.isRequired,
+    post: PropTypes.shape({
+        caption: PropTypes.string,
+        comments: PropTypes.arrayOf(PropTypes.shape({
+            createdAt: PropTypes.number.isRequired,
+            createdBy: PropTypes.string.isRequired,
+            comment: PropTypes.string.isRequired,
+            postId: PropTypes.string.isRequired
+        })),
+        createdAt: PropTypes.number.isRequired,
+        createdBy: PropTypes.string.isRequired,
+        imageURL: PropTypes.string.isRequired,
+        likes: PropTypes.arrayOf(PropTypes.string)
+    }).isRequired
+}

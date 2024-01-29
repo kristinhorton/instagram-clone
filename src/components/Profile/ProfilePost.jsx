@@ -3,11 +3,10 @@ import { AiFillHeart } from 'react-icons/ai'
 import { FaComment } from 'react-icons/fa'
 
 import useUserProfileStore from '../../store/userProfileStore'
-import ProfilePostModal from './ProfilePostModal'
-import useLikeandUnlikePost from '../../hooks/useLikeandUnlikePost'
+import PostModal from '../Modals/PostModal/PostModal'
 
 export const ProfilePost = ({ post }) => {
-    const { isOpen, onOpen, onClose } = useDisclosure()
+    const profilePostModal = useDisclosure()
     const userProfile = useUserProfileStore((state) => state.userProfile)
 
     return (
@@ -19,7 +18,7 @@ export const ProfilePost = ({ post }) => {
                 borderColor='whiteAlpha.300'
                 position='relative'
                 aspectRatio={1 / 1}
-                onClick={onOpen}
+                onClick={profilePostModal.onOpen}
                 maxW={350}
                 maxH={350}
             >
@@ -60,9 +59,9 @@ export const ProfilePost = ({ post }) => {
                     _hover={{ opacity: 0.3 }}
                 />
             </GridItem>
-            <ProfilePostModal
-                isOpen={isOpen}
-                onClose={onClose}
+            <PostModal
+                isOpen={profilePostModal.isOpen}
+                onClose={profilePostModal.onClose}
                 post={post}
                 userProfile={userProfile}
             />

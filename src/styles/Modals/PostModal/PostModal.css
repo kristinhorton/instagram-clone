@@ -1,0 +1,37 @@
+.modal-body{
+    background-color: black !important;
+    padding-bottom: 1.5rem;
+}
+
+.modal-body-flex {
+    gap: 1.5rem;
+    margin: auto;
+    padding-inline: .75rem;
+    min-height: 50vh;
+    max-height: 90vh;
+}
+
+.image-box{
+    overflow: hidden;
+    box-sizing: content-box;
+    width: fit-content;
+    align-items: center;
+    justify-content: center;
+}
+
+.image{
+    object-fit: cover;
+    width: 600px;
+    height: 600px;
+}
+
+.modal-right-content-flex{
+    flex-direction: column;
+    margin: 0;
+}
+
+.divider{
+    background: #718096;
+    margin-top: 2px;
+    margin-bottom: 2px;
+}

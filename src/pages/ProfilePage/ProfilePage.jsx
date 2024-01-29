@@ -5,7 +5,7 @@ import { Box, Container, Flex, Link, Text } from '@chakra-ui/react'
 import { ProfileHeader } from '../../components/Profile/ProfileHeader'
 import { ProfileTabs } from '../../components/Profile/ProfileTabs'
 import { ProfilePosts } from '../../components/Profile/ProfilePosts'
-import { LoadingProfileHeader } from '../../components/LoadingProfile/LoadingProfileHeader'
+import { LoadingProfileHeader } from '../../components/Loading/LoadingProfile/LoadingProfileHeader'
 import useGetProfileByUsername from '../../hooks/useGetProfileByUsername'
 
 

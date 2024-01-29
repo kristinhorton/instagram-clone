@@ -3,7 +3,7 @@ import useUserProfileStore from '../../store/userProfileStore'
 import useFollowAndUnfollowUser from '../../hooks/useFollowAndUnfollowUser'
 
 import { Avatar, Button, Flex, VStack, Text, useDisclosure } from '@chakra-ui/react'
-import EditProfileModal from './EditProfileModal'
+import EditProfileModal from '../Modals/EditProfileModal/EditProfileModal'
 
 export const ProfileHeader = () => {
     const { isLoading, userProfile } = useUserProfileStore()

@@ -1,4 +1,4 @@
-import { LikeLogo } from '../../assets/constants'
+import { LikeLogo } from '../../../../assets/constants'
 import { Box, Flex, Tooltip } from '@chakra-ui/react'
 
 const Notifications = () => {

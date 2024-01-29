@@ -1,18 +1,24 @@
-import { Box, Tooltip, useDisclosure, Flex } from '@chakra-ui/react'
-import { CreatePostLogo } from '../../assets/constants'
-import CreatePostModal from '../Create/CreatePostModal'
+import {
+    Box,
+    Flex,
+    Tooltip,
+    useDisclosure,
+} from "@chakra-ui/react";
+import { SearchLogo } from "../../../../assets/constants";
+import SearchModal from "../../../Modals/SearchModal/SearchModal";
 
-const Create = () => {
-    const { isOpen, onOpen, onClose } = useDisclosure()
+const Search = () => {
+    const { isOpen, onOpen, onClose } = useDisclosure();
+
     return (
         <>
             <Tooltip
                 hasArrow
-                label='Create'
-                placement={'right'}
+                label={"Search"}
+                placement='right'
                 ml={1}
                 openDelay={500}
-                display={{ base: 'block', lg: 'none' }}
+                display={{ base: "block", lg: "none" }}
             >
                 <Flex
                     display='flex'
@@ -26,15 +32,13 @@ const Create = () => {
                     color='rgb(245, 245, 245)'
                     onClick={onOpen}
                 >
-                    <CreatePostLogo size={24} />
-                    <Box display={{ base: 'none', lg: 'block' }}>
-                        Create
-                    </Box>
+                    <SearchLogo size={24} />
+                    <Box display={{ base: "none", lg: "block" }}>Search</Box>
                 </Flex>
             </Tooltip>
-            <CreatePostModal isOpen={isOpen} onClose={onClose} />
+            <SearchModal isOpen={isOpen} onClose={onClose} />
         </>
-    )
-}
+    );
+};
 
-export default Create
+export default Search

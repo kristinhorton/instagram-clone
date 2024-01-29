@@ -1,5 +1,3 @@
-'use client'
-
 import {
     Button,
     Flex,
@@ -18,11 +16,11 @@ import {
     ModalHeader,
     Textarea,
 } from '@chakra-ui/react'
-import useAuthStore from '../../store/authStore';
+import useAuthStore from '../../../store/authStore';
 import { useRef, useState } from 'react';
-import useShowToast from '../../hooks/useShowToast';
-import useEditProfile from '../../hooks/useEditProfile';
-import usePreviewImage from '../../hooks/usePreviewImage';
+import useShowToast from '../../../hooks/useShowToast';
+import useEditProfile from '../../../hooks/useEditProfile';
+import usePreviewImage from '../../../hooks/usePreviewImage';
 
 export default function EditProfile({ isOpen, onClose }) {
     const authUser = useAuthStore((state) => state.user);

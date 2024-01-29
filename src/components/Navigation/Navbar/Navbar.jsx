@@ -1,6 +1,6 @@
 import { Button, Container, Flex, Image } from "@chakra-ui/react"
 import { Link } from "react-router-dom"
-import { InstagramLogo } from '../../assets/constants'
+import { InstagramLogo } from '../../../assets/constants'
 
 
 export const Navbar = () => {

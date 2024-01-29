@@ -1,9 +1,9 @@
 import { useRef } from "react"
-import useSearchUser from "../../hooks/useSearchUser"
+import useSearchUser from "../../../hooks/useSearchUser"
 
 import { Button, Flex, FormControl, HStack, Input, InputGroup, InputLeftElement, Modal, ModalBody, ModalCloseButton, ModalContent, ModalHeader, ModalOverlay, Spinner, Stack } from "@chakra-ui/react"
 import { CiSearch } from "react-icons/ci"
-import SuggestedUser from '../SuggestedUsers/SuggestedUser'
+import SuggestedUser from '../../SuggestedUsers/SuggestedUser'
 
 const SearchModal = ({ onClose, isOpen }) => {
     const searchTermRef = useRef(null)

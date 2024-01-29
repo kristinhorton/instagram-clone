@@ -1,4 +1,4 @@
-import useAuthStore from "../../store/authStore"
+import useAuthStore from "../../../../store/authStore"
 
 import { Avatar, Box, Tooltip, Link } from '@chakra-ui/react'
 import { Link as RouterLink } from 'react-router-dom'

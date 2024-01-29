@@ -1,0 +1,70 @@
+.footer-flex {
+    align-items: center;
+    font-size: 12px;
+    gap: 1rem;
+    width: 100%;
+    padding-top: 0;
+    margin-bottom: .5rem;
+    margin-top: 1rem;
+}
+
+.like-button-box {
+    cursor: pointer;
+}
+
+.liked-icon {
+    width: 18px;
+    height: 18px;
+    color: red;
+}
+
+.unliked-icon {
+    width: 18px;
+    height: 18px;
+}
+
+.likes-total {
+    font-weight: bold;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.comment-button-box {
+    cursor: pointer;
+}
+
+.comment-icon {
+    width: 18px;
+    height: 18px;
+}
+
+.comments-total{
+    font-weight: 400;
+    font-size: 12px;
+    color: 'whiteAlpha.700';
+    cursor: pointer;
+}
+
+.caption-box {
+    font-size: 12px;
+}
+
+.comment-input-flex {
+    align-items: center;
+    gap: .5rem;
+    width: 100%;
+    margin-bottom: 1rem
+}
+
+.comment-input {
+    font-size: 12px !important;
+}
+
+.post-comment-button{
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.post-comment-button:hover{
+    color: white
+}

@@ -1,7 +1,7 @@
 import { Box, Flex } from '@chakra-ui/react'
 import SideBarLogo from './SidebarLogo'
-import SidebarItems from './SidebarItems'
-import Logout from './Logout'
+import SidebarItems from './SidebarItems/SidebarItems'
+import Logout from './SideBarItems/Logout'
 
 export const Sidebar = () => {
     return (

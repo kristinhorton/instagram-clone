@@ -1,10 +1,11 @@
 import { Box, Button, Flex, Image, Input, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, Textarea, VStack } from '@chakra-ui/react'
 import { FaImage } from "react-icons/fa6";
 
+import PropTypes from 'prop-types'
 import { useRef, useState } from 'react';
 import { useLocation } from 'react-router-dom';
-import usePreviewImage from '../../hooks/usePreviewImage';
-import useCreatePost from '../../hooks/useCreatePost';
+import usePreviewImage from '../../../hooks/usePreviewImage';
+import useCreatePost from '../../../hooks/useCreatePost';
 
 
 const CreatePostModal = ({ isOpen, onClose }) => {
@@ -117,3 +118,8 @@ const CreatePostModal = ({ isOpen, onClose }) => {
 }
 
 export default CreatePostModal
+
+CreatePostModal.proptypes = {
+    isOpen: PropTypes.func.isRequired,
+    onClose: PropTypes.func.isRequired,
+}

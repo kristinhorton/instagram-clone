@@ -1,4 +1,5 @@
 import useGoogleAuth from "../../hooks/useGoogleAuth"
+import PropTypes from 'prop-types'
 
 //components
 import { Flex, Text } from "@chakra-ui/react"
@@ -22,4 +23,8 @@ export const GoogleAuth = ({ prefix }) => {
       >{prefix} with Google</Text>
     </Flex>
   )
+}
+
+GoogleAuth.propTypes = {
+  prefix: PropTypes.string.isRequired
 }

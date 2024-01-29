@@ -1,4 +1,4 @@
-import useLogout from '../../hooks/useLogout'
+import useLogout from '../../../../hooks/useLogout'
 
 import { Button, Flex, Tooltip } from '@chakra-ui/react'
 import { BiLogOut } from 'react-icons/bi'

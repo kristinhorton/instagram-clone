@@ -1,7 +1,7 @@
 import { Box, Flex, Skeleton, SkeletonCircle, VStack, HStack } from '@chakra-ui/react'
 import React from 'react'
 
-export const LoadingFeed = ({ index }) => {
+const LoadingFeed = ({ index }) => {
     return (
         <VStack
             key={`skeleton-${index}`}
@@ -26,3 +26,5 @@ export const LoadingFeed = ({ index }) => {
         </VStack>
     )
 }
+
+export default LoadingFeed

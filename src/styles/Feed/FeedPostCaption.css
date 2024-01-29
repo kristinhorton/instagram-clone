@@ -1,0 +1,29 @@
+.expanded-caption {
+    display: block;
+    white-space: normal;
+    font-weight: bold;
+    font-size: 12;
+}
+
+.expanded-caption span {
+    font-weight: 400;
+}
+
+.collapsed-caption {
+    display: block;
+    height: 20px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    font-weight: bold;
+    font-size: 12;
+}
+
+.collapsed-caption span {
+    font-weight: 400;
+}
+
+.expander{
+    font-weight: bold;
+    cursor: pointer;
+}

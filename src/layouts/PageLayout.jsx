@@ -5,8 +5,8 @@ import { auth } from '../firebase/firebase'
 
 //components
 import { Flex, Box, Spinner } from '@chakra-ui/react'
-import { Sidebar } from '../components/Sidebar/Sidebar'
-import { Navbar } from '../components/Navbar/Navbar'
+import { Sidebar } from '../components/Navigation/Sidebar/Sidebar'
+import { Navbar } from '../components/Navigation/Navbar/Navbar'
 
 export const PageLayout = ({ children }) => {
     const { pathname } = useLocation()

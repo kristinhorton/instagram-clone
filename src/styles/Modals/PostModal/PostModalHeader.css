@@ -1,0 +1,36 @@
+.header-flex{
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-top: .5rem;
+    margin-bottom: .5rem;
+    font-size: 12px;
+}
+
+.link {
+    cursor: pointer
+}
+
+.username-flex{
+    gap: .25rem;
+    align-items: center;
+}
+
+.username-text{
+    font-weight: bold;
+    color: white;
+}
+
+.createdAt-text{
+    color: rgba(255, 255, 255, 0.64)
+}
+
+.follow-button {
+    font-size: 12px;
+    font-weight: bold;
+    color: #4299e1 !important;
+    padding: 0;
+}
+.follow-button:hover{
+    background: transparent;
+}
